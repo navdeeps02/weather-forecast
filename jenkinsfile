@@ -17,7 +17,7 @@ pipeline {
         stage ('Checkout') {
              steps {
                 cleanWs()
-                checkout([$class: 'GitSCM', branches: [[name: '*/feature/integrate-jenkins']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/navdeeps02/WeatherForecast']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/navdeeps02/weather-forecast.git']]])
              }
         }
 
