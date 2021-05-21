@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: weatherforecast-api
+  name: weatherforecast-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weatherforecast-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: weatherforecast-api
+    spec:
+      containers:
+      - image: navdeeps02/weatherforecast:latest
+        name: weatherforecast-api
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: weatherforecast-api
+  name: weatherforecast-api
+spec:
+  ports:
+  - port: 9090
+    protocol: TCP
+    targetPort: 9090
+    nodePort: 30007
+  externalIPs:
+    - 1.2.4.120
+  selector:
+    app: weatherforecast-api
+  type: NodePort
+  
